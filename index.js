@@ -24,8 +24,8 @@ app.use( cors() );
 app.use( express.json() );
 
 // Routes
-app.use('/api/test', require('./routes/user'));
-app.use('/', require('./routes/auth'));
+app.use('/api/user', require('./routes/user'));
+app.use('/api', require('./routes/auth'));
 
 app.listen(port, () => {
     console.log(`Server runing on port: ${port}`);
