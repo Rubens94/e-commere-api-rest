@@ -12,9 +12,11 @@ const register = async (req, res) => {
         process.env.PASS_SEC
       ).toString(),
     });
+
+    // save user
+    newUser.save();
   
     try {
-      const savedUser = await newUser.save();
       res.status(201).json({msg: 'User created'});
     } catch (err) {
       res.status(500).json(err);
@@ -57,7 +59,7 @@ const login = async (req, res) => {
             {expiresIn:"3d"}
         );
 
-        const { password, ...others } = user._doc;  
+        const { password, __v,...others } = user._doc;  
         res.status(200).json({...others, accessToken});
 
     }catch(err){
