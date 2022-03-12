@@ -14,7 +14,7 @@ const register = async (req, res) => {
     });
 
     // save user
-    newUser.save();
+    await newUser.save();
   
     try {
       res.status(201).json({msg: 'User created'});
